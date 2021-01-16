@@ -1,4 +1,5 @@
 .header{
+    overflow: visible !important;
     background-color: #fff;
     padding: .4rem;
     overflow: hidden;
