@@ -13,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 //app.use(passport.initialize);
 //app.use(passport.session);
 app.post('/signup', async (req, res) => {
+   
     let { name, email, password } = req.body;
     let hashedPassword = await bcrypt.hash(password, 8);
     pool.query(
@@ -43,8 +44,17 @@ app.post('/signup', async (req, res) => {
 app.get('/', (req, res) => {
     res.send("Im here");
 })
+app.post('/login', async (req,res) =>{ 
 
+    let { email, password} = req.body;
+    pool.query(
+        `SELECT * FROM users WHERE email=`+ email+` AND  password=`+ password+`;` , 
+        (err, results) => { if (err) throw err; res.send("2"); }  );
+    console.log(email );
+    res.send("lol");
+});
 
 app.listen(PORT, () => {
+    console.log(PORT);
     console.log("port opened");
 })
