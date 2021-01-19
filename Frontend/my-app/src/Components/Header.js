@@ -24,9 +24,8 @@ const Header = () => {
                     </Col>
                     <Col className="d-lg-none" xs={3} sm={3} md={3}>
                         <DropdownButton id="dropdown-basic-button" title ="Sign Up">
-                            <Dropdown.Item>About</Dropdown.Item>
-                            <Dropdown.Item>Login</Dropdown.Item>
-                            <Dropdown.Item>Sign Up</Dropdown.Item>
+                            <Dropdown.Item><Link to='/login'>Login</Link></Dropdown.Item>
+                            <Dropdown.Item><Link to='/register'>Sign Up</Link></Dropdown.Item>
                         </DropdownButton>
                     </Col>
                 </Row>

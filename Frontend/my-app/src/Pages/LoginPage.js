@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import '../css/LoginPage.css';
-import {Button, Container, Form, Row, Col, Alert}  from 'react-bootstrap';
+import {Button, Form, Alert}  from 'react-bootstrap';
 import axios from 'axios';
 
 
@@ -10,7 +10,6 @@ function LoginPage(){
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [errorMessage, setMessage] = useState("");
-
 
     const fade = () => {
         setTimeout(() => {
@@ -35,13 +34,10 @@ function LoginPage(){
     }
 
     return (
-        <Container className="container">
-            <Row>
-                <Col></Col>
-                <Col>
-                    <div style={{ height: '150px' }} />
-                    <div className="text-center" style={{ fontSize: '35px' }}> Campus Buy</div>
-                    <div style={{ height: '50px' }} />
+        <div className="loginPage">
+                <div className = "loginForm">
+                    <div className = "logo2"> Campus Buy </div>
+                    <div className = "slogon2"> Start Trading Within Your Campus! </div>
                     <Form>
                         <Form.Group controlId="email">
                             <Form.Label>Email address</Form.Label>
@@ -57,13 +53,10 @@ function LoginPage(){
                         <Alert variant="danger" onClose={() => setError(false)} show={error} dismissible>
                             {errorMessage}
                          </Alert>
-                        <Button type="submit" onClick={(e) => sendData(e)} >submit </Button>
+                        <Button as="div" className = "loginButton" type="submit" onClick={(e) => sendData(e)} >Login</Button>
                     </Form>
-                </Col>
-                <Col></Col>
-            </Row>
-        </Container>
-       
+                </div>
+        </div>
     );
 }
 
