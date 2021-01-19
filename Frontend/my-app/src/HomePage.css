@@ -1,0 +1,23 @@
+.home_nav_bar{
+    background: rgb(56, 169, 221);
+    height: 100px;
+    width: 1200px;
+    /* variant:"light"; */
+}
+
+.home_nav_bar Form{
+    text-align: right;
+}
+.home_nav_bar_search{
+    width: 500px;
+}
+
+.home_nav_col{
+
+}
+
+.home_main_center{
+    height: 1200px;
+    width: 1200px;
+    background-color: rgba(103, 247, 84, 0.575);
+}

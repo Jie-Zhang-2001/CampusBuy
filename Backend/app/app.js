@@ -1,3 +1,4 @@
+
 const express = require('express');
 const cors = require('cors');
 const { pool } = require('../dbConfig');
@@ -46,12 +47,33 @@ app.get('/', (req, res) => {
 })
 app.post('/login', async (req,res) =>{ 
 
-    let { email, password} = req.body;
+    let { email, password } = req.body;
+   
     pool.query(
-        `SELECT * FROM users WHERE email=`+ email+` AND  password=`+ password+`;` , 
-        (err, results) => { if (err) throw err; res.send("2"); }  );
-    console.log(email );
-    res.send("lol");
+        `SELECT * FROM loginsignup WHERE  email= $1`, [email],
+        (err, results) => { 
+            if (err) 
+            throw err;
+            if(results.rowCount!=0){
+
+                if(results.rows[0].password === password ){
+                    res.send("good");
+                }
+                else{
+                    res.send("bad");
+                }
+                
+              
+                
+            }
+            else{
+                res.send("bad");
+            }
+          
+            
+         });
+
+    
 });
 
 app.listen(PORT, () => {

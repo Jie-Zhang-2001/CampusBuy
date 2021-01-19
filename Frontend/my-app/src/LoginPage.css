@@ -1,3 +1,42 @@
+#root{
+    width: 100%;
+}
+.container2{
+    max-width: 100%;
+    background-image: url('./images/gift.jpeg');
+    background-size: cover;
+}
+
+.text-center{
+    color:#1e90ff;
+}
+.loginButton{
+    
+    width: 420px;
+}
+
+.loginform{
+    /* background-color: aliceblue; */
+    position: absolute;
+    right: 43rem;
+    top: 8.5rem;
+    padding: 2rem;
+    width: 30rem;
+    background-color: #fff;
+    border-radius: 1rem;
+}
+
+.background_row{
+    width: 100%;
+}
+
+.caraouselLogin{
+    padding: 0;
+    overflow: hidden;
+    height: 60rem;
+    width: 9000px;
+}
+
 input{
     height:30px;
     font-size:18pt ;
@@ -19,6 +58,16 @@ button{
     /* margin-left :5px; */
 
 }
-.container{
 
+
+.upperDiv{
+    height: 150px;
+}
+
+.lowerDiv{
+    height: 50px;
+}
+
+.text-center{
+    font-size: 35px;
 }

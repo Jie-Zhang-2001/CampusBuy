@@ -4,6 +4,8 @@ import '../css/header.css';
 import LogoSlogon from './LogoSlogon';
 
 const Header = () => {
+    
+
     return (
         <div className="header">
             <Container fluid>
@@ -17,14 +19,19 @@ const Header = () => {
                                 <a href="#about" className = "about">About</a>
                             </Nav.Item>
                             <Nav.Item className ="navTabs">
-                                <Nav.Link href="/signup">Login</Nav.Link>
+                                <Nav.Link href="/login">Login</Nav.Link>
+                            </Nav.Item>
+                            
+                            <Nav.Item className ="navTabs">
+                                <Nav.Link href="/register">Register</Nav.Link>
                             </Nav.Item>
                         </Nav>
                     </Col>
                     <Col className="d-lg-none" xs={3} sm={3} md={3}>
                         <DropdownButton id="dropdown-basic-button" title ="Sign Up">
                                 <Dropdown.Item>About</Dropdown.Item>
-                            <Dropdown.Item>Login</Dropdown.Item>
+                            <Dropdown.Item >Login</Dropdown.Item>
+                            <Dropdown.Item >Register</Dropdown.Item>
                             <Dropdown.Item>Sign Up</Dropdown.Item>
                         </DropdownButton>
                     </Col>
