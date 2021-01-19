@@ -1,20 +1,22 @@
 import './App.css';
 import './css/comm.css';
-import Header from './Components/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CarasoulSignUp from './Components/CarasoulSignUp';
-import Footer from './Components/Footer';
-import './css/landing.css';
-import LoginPage from './LoginPage';
+import LandingPage from './Pages/LandingPage';
+import LoginPage from './Pages/LoginPage';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      {/* <Header />
-      <CarasoulSignUp />
-      <Footer /> */}
-      <LoginPage />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/'>
+          <LandingPage />
+        </Route>
+        <Route path='/login'>
+          <LoginPage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
