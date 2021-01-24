@@ -1,0 +1,12 @@
+.signedInHeader{
+    overflow: visible !important;
+    background-color: #fff;
+    padding: 0.4rem;
+    overflow: hidden;
+    height: 4rem;
+    border-bottom:1px solid #ccc;
+}
+
+.searchbar{
+    margin-top:0.5rem;
+}

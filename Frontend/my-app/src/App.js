@@ -6,6 +6,7 @@ import LoginPage from './Pages/LoginPage';
 import HomePage from './Pages/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import RegisterPage from './Pages/RegisterPage';
+import SearchPage from './Pages/SearchPage';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
         </Route>
         <Route path='/home'>
           <HomePage />
+        </Route>
+        <Route path='/search'>
+          <SearchPage />
         </Route>
       </Switch>
     </Router>
