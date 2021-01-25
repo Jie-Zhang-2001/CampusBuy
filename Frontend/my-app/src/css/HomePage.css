@@ -1,0 +1,52 @@
+.account_logo{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.home_body_navbar{
+    width: 120rem;
+}
+
+.home_body_pd_adboard{
+    width: 100%;
+    
+    
+}
+
+.home_body_pd_adboard .carousel-item{
+    height: 30rem;
+}
+
+.home_body_pd_filter{
+    max-width: 20%;
+    border: 100rem;
+    border-color: black;
+}
+
+.home_body_pd_filter_control{
+    width: 5rem;
+}
+
+.home_body_pd_filter_to{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.body .row{
+    padding-bottom: 1rem;
+}
+
+.home_body_recommendation_form {
+    width: 20rem;
+    background-color: white;
+    border: 1px solid;
+    border-color: lightgrey;
+}
+
+.home_body_recommendation_text{
+    padding: 1rem;
+}
+
+.home_body_recommendation .col{
+    padding-left: 5rem;
+}
