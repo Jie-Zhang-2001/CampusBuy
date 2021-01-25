@@ -7,6 +7,7 @@ import HomePage from './Pages/HomePage';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import RegisterPage from './Pages/RegisterPage';
 import SearchPage from './Pages/SearchPage';
+import ProductPage from './Pages/ProductPage';
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
         </Route>
         <Route path='/search'>
           <SearchPage />
+        </Route>
+        <Route path='/product'>
+          <ProductPage />
         </Route>
       </Switch>
     </Router>
