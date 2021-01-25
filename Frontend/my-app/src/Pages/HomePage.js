@@ -1,42 +1,16 @@
 import React from 'react';
 import Footer from '../Components/Footer';
-import LogoSlogon from '../Components/LogoSlogon';
-import Account_Logo from '../images/Account_Logo.png';
 import Gift_Image from '../images/gift.jpeg';
-import { Row, Col, Container, Nav, Dropdown, DropdownButton, Image, Button,Form, FormControl, NavDropdown, Navbar, Carousel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Row, Col, Container, Image, Button,Form, Carousel } from 'react-bootstrap';
 import '../css/HomePage.css';
+import SignedInHeader from '../Components/SignedInHeader';
 
 const HomePage = () => {
     return (
         <div>
-            <Container className='header' fluid>
-                <Row>
-                    <Col xs={9} sm={9} md={9} lg={6} xl={9} >
-                       <Link to='/'> <LogoSlogon /></Link>
-                    </Col>
-                    <Col xs={0} sm={0} md={0} lg={6} xl={3} className="d-none d-lg-block">
-                        <Nav defaultActiveKey="/home" className="justify-content-center">
-                            <Nav.Item className ="navTabs">
-                                <a href="#about" className = "about">About</a>
-                            </Nav.Item>
-                            <Nav.Item className ="navTabs">
-                                <Link to="/login"><Image fluid className='account_logo' src={Account_Logo}  roundedCircle/></Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Col>
-                    <Col className="d-lg-none" xs={3} sm={3} md={3}>
-                        <DropdownButton id="dropdown-basic-button" title ="Sign Up">
-                            <Dropdown.Item><Link to='/login'>Login</Link></Dropdown.Item>
-                            <Dropdown.Item><Link to='/register'>Sign Up</Link></Dropdown.Item>
-                        </DropdownButton>
-                    </Col>
-                </Row>
-            </Container>
-            
+            <SignedInHeader />
+           
             <Container fluid className='body'> 
-               
-
                 <Row className='home_body_product_display'>
                     <Col >
                         <Carousel className='home_body_pd_adboard'>
@@ -165,8 +139,6 @@ const HomePage = () => {
                    </Col>
 
                </Row>
-
-               
 
             </Container>
             
