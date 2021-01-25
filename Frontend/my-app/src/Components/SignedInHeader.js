@@ -9,7 +9,7 @@ const SignedInHeader = () => {
       <div className="signedInHeader">
         <Container fluid>
           <Row>
-            <Col xs={4} sm={4} md={4} lg={4} xl={4}>
+            <Col xs={4} sm={4} md={5} lg={5} xl={4}>
               <LogoSlogon />
             </Col>
             <Col>
@@ -24,7 +24,7 @@ const SignedInHeader = () => {
                 </InputGroup.Append>
               </InputGroup>
             </Col>
-            <Col xs={0} sm={0} md={0} lg={3} xl={3}>
+            <Col xs={4} sm={4} md={2} lg={3} xl={3}>
               <Nav className="justify-content-center">
                 <Nav.Item className="navTabs">
                   <Link to="/account">Account</Link>
