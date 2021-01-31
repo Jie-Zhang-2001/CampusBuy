@@ -3,6 +3,7 @@ import { Row, Col, Tab, ListGroup} from 'react-bootstrap';
 import SignedInHeader from '../Components/SignedInHeader';
 import PersonalInfo from '../Components/PersonalInfo';
 import ProductRecord from '../Components/ProductsRecord';
+import PostingProduct from '../Components/PostingProduct';
 import '../css/ProfilePage.css';
 
 
@@ -21,8 +22,13 @@ function ProfilePage(){
                                 <ListGroup.Item action href="#personalinfo">
                                     Personal Info
                                 </ListGroup.Item>
+                                
                                 <ListGroup.Item action href="#products">
                                     Products
+                                </ListGroup.Item>
+
+                                <ListGroup.Item action href="#posting">
+                                    Posting
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
@@ -31,8 +37,13 @@ function ProfilePage(){
                                 <Tab.Pane eventKey="#personalinfo">
                                     <PersonalInfo />
                                 </Tab.Pane>
+                                
                                 <Tab.Pane eventKey="#products">
                                     <ProductRecord />
+                                </Tab.Pane>
+
+                                <Tab.Pane eventKey="#posting">
+                                    <PostingProduct />
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>

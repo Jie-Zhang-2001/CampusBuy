@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import RegisterPage from './Pages/RegisterPage';
 import SearchPage from './Pages/SearchPage';
 import ProductPage from './Pages/ProductPage';
+import ProfilePage from './Pages/ProfilePage';
 
 function App() {
   return (
@@ -16,20 +17,33 @@ function App() {
         <Route exact path='/'>
           <LandingPage />
         </Route>
+        
         <Route path='/login'>
           <LoginPage />
         </Route>
+        
         <Route path='/register'>
           <RegisterPage />
         </Route>
+        
         <Route path='/home'>
           <HomePage />
         </Route>
+        
         <Route path='/search'>
           <SearchPage />
         </Route>
+        
         <Route path='/product'>
           <ProductPage />
+        </Route>
+        
+        <Route path='/product'>
+          <ProductPage />
+        </Route>
+
+        <Route path='/profile'>
+          <ProfilePage />
         </Route>
       </Switch>
     </Router>
