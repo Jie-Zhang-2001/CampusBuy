@@ -10,9 +10,12 @@ const app = express();
 
 const PORT = process.env.PORT || 4000;
 app.use(cors({credentials: true, origin:"http://localhost:3000"}));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
 app.use(cookie());
+app.use(express.json({limit: '500mb', extended: true}));   // this allows frontend to pass maximum of 500mb data to backend
+app.use(express.urlencoded({limit: '500mb', extended: true}));
+
 
 const isAuth = (req, res, next) => {
     const token = req.cookies.token;
@@ -103,38 +106,42 @@ app.post('/login', async (req, res) => {
     );
 });
 
-app.post('/postProduct', async (req, res) => {
-    let {productName, productDescrip, productImages ,productPrice } = req.body;
+
+
+app.post('/postProduct',async (req, res) => {
+    let {productName, productDescrip, productPrice, productImages } = req.body;
     pool.query(
-        'SELECT * FROM products WHERE productName=$1', [productName], (err, result) => {
-            if (err){
-                throw err;
-            }
-            if(result.rows.length>0){
-                res.send({
-                    anuthorized: false,
-                    message:"Product name already existed in the database, please use a different name."
-                });
-            }
-            else{
-                pool.query(
-                    `INSERT INTO products (productName, productDescrip, productImages, productPrice)
-                     VALUES ($1, $2, $3, $4)`, [productName,productDescrip,productImages,productPrice], (err, result) => {
-                         if(err){
-                             throw err;
-                         }
-                         res.send({
-                             authorized: true,
-                             message: 'New product is sucessfully inserted into our database.'
-                         });
-                     }
-                );
-            }
+        `INSERT INTO products ("productName", "productDescrip", "productImages", "productPrice", "productSeller", "productType")
+         VALUES ($1, $2, $3, $4, $5, $6)`, [productName,productDescrip,productImages,productPrice, 123, "noType"], (err, result) => {
+             if(err){
+                 throw err;
+             }
              
-        }
+             pool.query(
+                 `SELECT  *  from products; `, (err, result) => {
+                     if (err){
+                        throw err;
+                     }
+                     for(var i=0;i<result.rows.length;i++){
+                         const obj = result.rows[i];
+                         console.log(obj.productImages); // this allows us to see the content of bytea[] object
+                     }
+                     
+                       
+                 }
+             );
+
+             res.send({
+                 authorized: true,
+                 message: 'New product is sucessfully inserted into our database.'
+             });
+         }
     );
 
 });
+
+
+
 
 
 app.listen(PORT, () => {
