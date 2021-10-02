@@ -8,7 +8,7 @@ is created using TalkJS API. Backend dynamic file uploading is done through Clou
 Responsive UI design is made from React-Bootstrap. </p>
 
 ## **How To Use**
-1. Open www.campus-buy.com
+1. Open http://campus-buy.com/
 2. Start trading!
 
 
