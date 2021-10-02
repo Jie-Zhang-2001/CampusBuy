@@ -13,7 +13,8 @@ Responsive UI design is made from React-Bootstrap. </p>
 
 
 
-**Guide**
+
+## **Guide**
 
 <p align="center">
 <img src = "https://res.cloudinary.com/daufq6nuh/image/upload/v1633145810/QQ%E5%9B%BE%E7%89%8720211001233416_vxl30j.png" style = "
