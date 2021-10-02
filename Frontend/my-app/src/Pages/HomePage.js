@@ -1,150 +1,144 @@
-import React from 'react';
-import Footer from '../Components/Footer';
-import Gift_Image from '../images/gift.jpeg';
-import { Row, Col, Container, Image, Button,Form, Carousel } from 'react-bootstrap';
-import '../css/HomePage.css';
-import SignedInHeader from '../Components/SignedInHeader';
+import React, { useContext, useState, useEffect } from "react";
+
+import Footer from "../Components/Footer";
+
+import {
+  Row,
+  Col,
+  Container,
+ 
+  Carousel,
+} from "react-bootstrap";
+import "../css/HomePage.css";
+import SignedInHeader from "../Components/SignedInHeader";
+import AuthContext from "../store/auth-context";
+import { Redirect } from "react-router";
+import ProductCard from "../Components/ProductCard";
+import axios from "axios";
+import images from '../images/Images';
+
 
 const HomePage = () => {
-    return (
-        <div>
-            <SignedInHeader />
-           
-            <Container fluid className='body'> 
-                <Row className='home_body_product_display'>
-                    <Col >
-                        <Carousel className='home_body_pd_adboard'>
-                            <Carousel.Item fluid>
-                                <img fluid
-                                    className="d-block w-100"
-                                    src={Gift_Image}
-                                    alt="First slide"
-                                />
-                                <Carousel.Caption>
-                                    <h3>First slide label</h3>
-                                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img fluid
-                                    className="d-block w-100"
-                                    src={Gift_Image}
-                                    alt="Third slide"
-                                />
+  const ctx = useContext(AuthContext);
+  const [products, setProducts] = useState([]);
+  const [recProducts, setRecProducts] = useState([]);
+  
 
-                                <Carousel.Caption>
-                                    <h3>Second slide label</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                            <Carousel.Item>
-                                <img fluid
-                                    className="d-block w-100"
-                                    src={Gift_Image}
-                                    alt="Third slide"
-                                />
+  async function request(){
+    const response = await axios.post(`${ctx.backendURL}/getProducts`, {
+      token: ctx.token,
+    });
 
-                                <Carousel.Caption>
-                                    <h3>Third slide label</h3>
-                                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                                </Carousel.Caption>
-                            </Carousel.Item>
-                        </Carousel>
-                    </Col>
-                </Row>
+    setProducts(response.data);
+  };
 
-               <Row className="home_body_recommendation">
-                   <Col>
-                        <div fluid className="home_body_recommendation_form">
-                            <Form>
-                                <Form.Group >
-                                    <Image fluid src={Gift_Image} />
-                                </Form.Group>
+  useEffect(() => {
+    request();
+  }, []);
 
-                                <div className="home_body_recommendation_text">
-                                    <Form.Group>
-                                        <Form.Label> Item 1 </Form.Label>
-                                        <Form.Text> Description for item 1 </Form.Text>
-                                    </Form.Group>
+  useEffect(()=>{
 
-                                    <Form.Group>
-                                        <Button> Go Somewhere </Button>
-                                    </Form.Group>
-                                </div>
-                            </Form>
-                        </div>
-                   </Col>
-                        
-                   <Col>
-                        <div fluid className="home_body_recommendation_form">
-                            <Form>
-                                <Form.Group >
-                                    <Image fluid src={Gift_Image} />
-                                </Form.Group>
-
-                                <div className="home_body_recommendation_text">
-                                    <Form.Group>
-                                        <Form.Label> Item 1 </Form.Label>
-                                        <Form.Text> Description for item 1 </Form.Text>
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Button> Go Somewhere </Button>
-                                    </Form.Group>
-                                </div>
-                            </Form>
-                        </div>
-                   </Col>
-                   
-                   <Col>
-                        <div fluid className="home_body_recommendation_form">
-                            <Form>
-                                <Form.Group >
-                                    <Image fluid src={Gift_Image} />
-                                </Form.Group>
-
-                                <div className="home_body_recommendation_text">
-                                    <Form.Group>
-                                        <Form.Label> Item 1 </Form.Label>
-                                        <Form.Text> Description for item 1 </Form.Text>
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Button> Go Somewhere </Button>
-                                    </Form.Group>
-                                </div>
-                            </Form>
-                        </div>
-                   </Col>
-
-                   <Col>
-                        <div fluid className="home_body_recommendation_form">
-                            <Form>
-                                <Form.Group >
-                                    <Image fluid src={Gift_Image} />
-                                </Form.Group>
-
-                                <div className="home_body_recommendation_text">
-                                    <Form.Group>
-                                        <Form.Label> Item 1 </Form.Label>
-                                        <Form.Text> Description for item 1 </Form.Text>
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Button> Go Somewhere </Button>
-                                    </Form.Group>
-                                </div>
-                            </Form>
-                        </div>
-                   </Col>
-
-               </Row>
-
-            </Container>
+    if( products.length>4 ){
+        const random4 = [];
+        while( random4.length <4 ){
+            var randomNum = Math.floor(Math.random() * products.length) ;
+            if(!random4.includes(randomNum)){
+                random4.push(randomNum);
+            }
             
-            <Footer />
-        </div>
-    );
-}
+        }
+        setRecProducts([ products[random4[0]] , products[random4[1]] , products[random4[2]] , products[random4[3]] ]);
+    }
+    else{
+        setRecProducts(products);
+    }
+
+      
+  },[products]);
+
+  if (ctx.isLoggedIn === false) {
+    
+    return <Redirect to="/login" />;
+  }
+
+  return (
+    <div>
+      <SignedInHeader />
+
+      <Container fluid="true" className="body">
+        <Row className="home_body_product_display" style={{ margin: "0", backgroundColor:'#5D5C61' }}>
+          <Col>
+            <Carousel className="home_body_pd_adboard">
+              <Carousel.Item fluid="true">
+                <img
+                  fluid="true"
+                  className="d-block w-100"
+                  src={images.Gift}
+                  alt="First slide"
+                />
+                <Carousel.Caption>
+                  <h3>First slide label</h3>
+                  <p>
+                    Nulla vitae elit libero, a pharetra augue mollis interdum.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  fluid="true"
+                  className="d-block w-100"
+                  src={images.Mountain}
+                  alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Second slide label</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img
+                  fluid="true"
+                  className="d-block w-100"
+                  src={images.StarSky}
+                  alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                  <h3>Third slide label</h3>
+                  <p>
+                    Praesent commodo cursus magna, vel scelerisque nisl
+                    consectetur.
+                  </p>
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
+          </Col>
+        </Row>
+
+        <Row className="home_body_recommendation" style={{ margin: "0", backgroundColor:'#97CAEF' }}>
+          {recProducts.map((product, index) =>{
+              
+              return (
+                <Col key={index}>
+                  <ProductCard
+                    title={product.productName}
+                    description={product.productDescrip}
+                    img={product.productImages[0]}
+                    id={product.id}
+                    price={product.productPrice}
+                  ></ProductCard>
+                </Col>
+              );
+          } )}
+        </Row>
+      </Container>
+
+      <Footer />
+    </div>
+  );
+};
 
 export default HomePage;

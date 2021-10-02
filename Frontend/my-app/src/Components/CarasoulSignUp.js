@@ -1,70 +1,52 @@
-import React from 'react';
-import { Col, Row, Container, Carousel, Card } from 'react-bootstrap';
-import caraImage from '../images/LandingCarasoul.jpeg';
-import caraImage2 from '../images/Products.jpg';
-import caraImage3 from '../images/gift.jpeg';
-import SignUp from './SignUp';
-import '../css/landing.css'
+import React from "react";
+import { Col, Row, Container } from "react-bootstrap";
+import AdsThumbnail from "./AdsThumbnail";
+import SignUp from "./SignUp";
+import classes from "../css/CarasoulSignUp.module.css";
+import SelfCarousel from "./SelfCarousel.js";
+import Images from "../images/Images.js";
+
 
 const CarasoulSignUp = () => {
-    return (
-        <Container fluid>
-            <Row>
-                <Col className="carasoulSignup" xs={0} sm={0} md={0} lg={12}>
-                    <Carousel as="div" className = "carousel" controls={false}> 
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={caraImage}
-                                alt="buying"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={caraImage2}
-                                alt="products"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={caraImage3}
-                                alt="products"
-                            />
-                        </Carousel.Item>
-                    </Carousel>
-                </Col>
-                </Row>
-                <SignUp />
-            <Row id = "about" className="justify-content-md-center">
-                <Col className="cardCol">
-                    <Card style={{ width: '10rem' }} />
-                    <Card.Body>
-                        <Card.Img className = "cardImg" variant="top" src={caraImage3} />
-                        <Card.Title>Recommendation</Card.Title>
-                        <Card.Text>Hottest items on sale</Card.Text>
-                    </Card.Body>
-                </Col>
-                <Col className="cardCol">
-                    <Card style={{ width: '10rem' }} />
-                    <Card.Body>
-                        <Card.Img className = "cardImg" variant="top" src={caraImage2} />
-                        <Card.Title>Trade</Card.Title>
-                        <Card.Text>Trade within your comfort</Card.Text>
-                        </Card.Body>
-                </Col>
-                <Col className="cardCol">
-                    <Card style={{ width: '10rem' }} />
-                    <Card.Body>
-                        <Card.Img className = "cardImg" variant="top" src={caraImage} />
-                        <Card.Title>Covenience</Card.Title>
-                        <Card.Text>Shop in your home</Card.Text>
-                    </Card.Body>
-                </Col>
-            </Row>
-        </Container>
-    );
-}
+  const adsObjects = [
+    {
+      title: "Recommendation",
+      text: "Hottest items on sale",
+      img: Images.Gift,
+    },
+    {
+      title: "Trade",
+      text: "Trade within your comfort",
+      img: Images.Products,
+    },
+    {
+      title: "Covenience",
+      text: "Shop in your home",
+      img: Images.LandingCarasoul,
+    },
+  ];
+  
+  return (
+    <Container fluid>
+      <Row >
+        <Col className={classes.carouselSignup} xs={0} sm={0} md={0} lg={12}>
+        <SelfCarousel  className={classes.selfCarousel}  controls={false} carouselItems={adsObjects} ></SelfCarousel>
+        </Col>
+      </Row>
+      <SignUp />
+      <Row id="about" className="justify-content-md-center">
+        {adsObjects.map((ads, index) => (
+          <Col key={index} className={classes.cardCol}>
+            <AdsThumbnail
+              title={ads.title}
+              text={ads.text}
+              img={ads.img}
+            ></AdsThumbnail>
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
+};
 
 export default CarasoulSignUp;

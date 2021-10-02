@@ -11,7 +11,7 @@
     font-size:1.5rem;
     font-weight:550;
     margin-bottom:1rem;
-    border-bottom:1px solid #ccc;
+    border-bottom:1px solid black;
 }
 
 .relatedProducts{
@@ -42,6 +42,35 @@
     padding:2rem;
     padding-top:5rem;
     margin-top:1rem;
-    border-top:1px solid #ccc;
-    border-bottom:1px solid #ccc;
+    border-top:1px solid black;
+    border-bottom:1px solid black;
+}
+
+
+.selfCarousel ol{
+    height: 2rem;
+
+}
+
+.selfCarousel ol li{
+    background-color: grey;
+    
+}
+
+.selfCarousel a{
+    background-color: grey;
+    width: 5rem;
+    height: 5rem;
+    top: 50%
+}
+
+.selfCarousel{
+    width: 100%!important;
+    height: 50rem!important;
+   
+    text-align: center!important;
+}
+
+.selfCarousel img{
+    object-fit: contain !important;
 }

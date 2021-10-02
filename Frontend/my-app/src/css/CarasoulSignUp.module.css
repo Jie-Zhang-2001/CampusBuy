@@ -1,0 +1,18 @@
+.cardCol{
+    text-align: center;
+}
+
+.carousel,  .carousel-inner,  .carousel-item,  .carousel-item img{
+    height: inherit;
+}
+
+.carouselSignup{
+    padding:0;
+    height:40rem;
+}
+
+@media only screen and (max-width:500px){
+    .carouselSignup{
+        height:25rem!important;
+    }
+}

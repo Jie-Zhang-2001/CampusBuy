@@ -1,16 +1,26 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
+import { Link, useHistory } from "react-router-dom";
 import '../css/LoginPage.css';
 import {Button, Form, Alert}  from 'react-bootstrap';
 import axios from 'axios';
+import AuthContext from "../store/auth-context";
+import { Redirect } from "react-router";
 
 
-function LoginPage(){
-   
+const LoginPage = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(false);
     const [errorMessage, setMessage] = useState("");
+    const history = useHistory();
+    const ctx = useContext(AuthContext);
+    if(ctx.isLoggedIn === true){
+       
+        return <Redirect to='/home' />
+    }
+    
 
+    
     const fade = () => {
         setTimeout(() => {
             setError(false);
@@ -25,18 +35,25 @@ function LoginPage(){
             fade();
             return;
         }
-        const data = await axios.post("http://localhost:4000/login", { email, password }, { withCredentials: true, credentials: 'include' });
-        if (!data.data.authorized) {
+        const response = await axios.post(`${ctx.backendURL}/login`, { email, password }, { withCredentials: true, credentials: 'include' });
+        
+        if( response.data.authorized ){
+            ctx.login(response.data.token);
+            history.push("/home");
+        }
+        else{
+            setMessage(response.data.message);
             setError(true);
             fade();
         }
-        setMessage(data.data.message);
+        
+        
     }
 
     return (
         <div className="loginPage">
                 <div className = "loginForm">
-                    <div className = "logo2"> Campus Buy </div>
+                    <Link to='/'><div className = "logo2"> Campus Buy </div></Link>
                     <div className = "slogon2"> Start Trading Within Your Campus! </div>
                     <Form>
                         <Form.Group controlId="email">

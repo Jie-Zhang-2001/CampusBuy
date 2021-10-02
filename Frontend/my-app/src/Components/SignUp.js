@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import classes from '../css/SignUp.module.css'
+import AuthContext from '../store/auth-context';
 
 const SignUp = (props) => {
-    useEffect(() => {
-        signUpFormCss();
-    }, [props.history.location.pathname]);
-    
-    const signUpFormCss = () => {
-        if (props.history.location.pathname === '/register') {
-            require('../css/SignUp.css');
-        } else {
-            require('../css/landing.css');
-        }
-    }
+  
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,10 +14,11 @@ const SignUp = (props) => {
     const [error, setError] = useState(false);
     const [errorMessage, setMessage] = useState('');
     const [success, setSuccess] = useState(false);
+    const ctx = useContext(AuthContext);
 
     const notifFade = (x) => {
         setTimeout(() => {
-            if (x == 1) { //1 for error, 2 for success
+            if (x === 1) { //1 for error, 2 for success
                 setError(false);
             } else {
                 setSuccess(false);
@@ -40,7 +33,7 @@ const SignUp = (props) => {
             notifFade(1);
             return;
         }
-        if (password != confirmPassword) {
+        if (password !== confirmPassword) {
             setError(true);
             setMessage("Please check your password");
             notifFade(1);
@@ -52,8 +45,8 @@ const SignUp = (props) => {
             notifFade(1);
             return;
         }
-        const data = await axios.post('http://localhost:4000/signup', { name, email, password, confirmPassword });
-        if (data.data == 1) {
+        const data = await axios.post(`${ctx.backendURL}/signup`, { name:name, email:email, password:password, confirmPassword:confirmPassword });
+        if (data.data === 1) {
             setMessage("Email already registered");
             setError(true);
             notifFade(1);
@@ -66,13 +59,13 @@ const SignUp = (props) => {
     }
     return (
         <div>
-            <Alert className="successMessage" variant="success" onClose={() => setError(false)} show={success} dismissible>
+            <Alert className={classes.successMessage} variant="success" onClose={() => setError(false)} show={success} dismissible>
                 {errorMessage}
             </Alert>
-            <div className="signUpForm">
+            <div className={ props.className ?  props.className:classes.signUpForm }>
                 <Form >
-                    <div className="logo">Campus Buy</div>
-                    <div className="signupmessage">Start Trading Within Your Campus!</div>
+                    <div className={classes.logo}>Campus Buy</div>
+                    <div className={classes.signUpMessage}>Start Trading Within Your Campus!</div>
                     <Form.Group controlId="name">
                         <Form.Label>Name</Form.Label>
                         <Form.Control type="text" placeholder="Enter Name" onChange={(e) => setName(e.target.value)} />
@@ -90,7 +83,7 @@ const SignUp = (props) => {
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control type="password" placeholder="Confirm Password" onChange={(e) => setCPassword(e.target.value)} />
                     </Form.Group>
-                    <Button as="div" className="signUpButton" variant="primary" type="submit" onClick={signUp}>
+                    <Button as="div" className={classes.signUpButton} variant="primary" type="submit" onClick={signUp}>
                         Sign Up
                     </Button>
                     <Alert variant="danger" onClose={() => setError(false)} show={error} dismissible>

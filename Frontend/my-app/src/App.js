@@ -9,19 +9,46 @@ import RegisterPage from './Pages/RegisterPage';
 import SearchPage from './Pages/SearchPage';
 import ProductPage from './Pages/ProductPage';
 import ProfilePage from './Pages/ProfilePage';
+import AuthContext from './store/auth-context';
+import {useContext, useState, useEffect} from 'react';
+import axios from 'axios';
+import LoadingPage from './Pages/LoadingPage';
 
-function App() {
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const ctx = useContext(AuthContext);
+  
+  async function request(){
+    const response = await axios.get(`${ctx.backendURL}/isloggedin`, { withCredentials: true, credentials: 'include' });
+    if( response.data.authenticated ){
+      ctx.login(response.data.token)
+    }
+    setIsLoading(false);
+  }; 
+  
+  useEffect(()=>{
+    request();
+  },[]);
+  
+
+  if( isLoading ){
+    return(<LoadingPage/>);
+  }
+  
+  
   return (
     <Router>
       <Switch>
         <Route exact path='/'>
           <LandingPage />
         </Route>
-        
+
         <Route path='/login'>
           <LoginPage />
         </Route>
         
+        
+
         <Route path='/register'>
           <RegisterPage />
         </Route>
@@ -34,17 +61,15 @@ function App() {
           <SearchPage />
         </Route>
         
-        <Route path='/product'>
-          <ProductPage />
-        </Route>
-        
-        <Route path='/product'>
+        <Route path='/products/:productId'>
           <ProductPage />
         </Route>
 
         <Route path='/profile'>
           <ProfilePage />
         </Route>
+
+        
       </Switch>
     </Router>
   );

@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Row, Col, Tab, ListGroup} from 'react-bootstrap';
 import SignedInHeader from '../Components/SignedInHeader';
 import PersonalInfo from '../Components/PersonalInfo';
 import ProductRecord from '../Components/ProductsRecord';
 import PostingProduct from '../Components/PostingProduct';
 import '../css/ProfilePage.css';
-
+import AuthContext from '../store/auth-context';
+import { Redirect } from "react-router";
 
 
 function ProfilePage(){
-    
+    const ctx = useContext(AuthContext);
+    if(ctx.isLoggedIn === false){
+        return ( <Redirect to='/login' />);
+    }
+
     return(
         <div>
             <SignedInHeader/>

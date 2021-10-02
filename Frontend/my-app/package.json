@@ -1,5 +1,7 @@
 {
   "name": "my-app",
+  "homepage": ".",
+  "proxy": "http://campus-buy.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -14,6 +16,7 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "talkjs": "^0.14.5",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

@@ -1,0 +1,27 @@
+.filter{
+    position:fixed;
+    padding:1rem;
+    width: inherit;
+    max-width:inherit;
+    border-right: 1px solid #ccc;
+    height:100vh;
+}
+.divider{
+    margin-top:2rem;
+    padding:1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.filterBox{
+    /* position: absolute; */
+    background-color: white;
+    padding: 1rem;
+    width: 15%;
+    border-right: 1px solid black;
+    height: inherit;
+    /* justify-content: space-around; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

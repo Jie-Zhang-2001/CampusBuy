@@ -1,0 +1,9 @@
+.card{
+    width: 10rem;
+}
+
+.cardImg{
+    width:25rem;
+    margin-top:3rem;
+    border-radius:1rem;
+}

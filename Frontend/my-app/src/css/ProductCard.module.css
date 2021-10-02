@@ -1,0 +1,48 @@
+.rec_form {
+    width: 20rem;
+    background-color: white;
+    border: 1px solid;
+    border-color: lightgrey;
+
+}
+
+.rec_text{
+    padding: 1rem;
+}
+
+.productCard{
+    margin: 1rem;
+    min-width: 10rem;
+    max-width: 15rem;
+}
+
+
+
+.cardBody{
+    height: 15rem;
+    
+}
+
+.cardTitle{
+    height: 3.5rem;
+    font-size: 1em;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.cardText{
+    height:5rem;
+    overflow: overlay;
+    
+    
+}
+
+.cardButton{
+
+}
+
+.cardImage{
+    object-fit: contain;
+    height: 8.5rem;
+    background-color: #55BCC9;
+}
