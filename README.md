@@ -15,7 +15,27 @@ Responsive UI design is made from React-Bootstrap. </p>
 
 **Guide**
 
-https://user-images.githubusercontent.com/73798628/131922460-2389b129-78d2-4812-bdc2-e8c927a6a3ac.mp4
+<p align="center">
+<img src = "https://res.cloudinary.com/daufq6nuh/image/upload/v1633145810/QQ%E5%9B%BE%E7%89%8720211001233416_vxl30j.png" style = "
+  width: 100%;"/> 
+</p>
+<p align="center">
+<img src = "https://res.cloudinary.com/daufq6nuh/image/upload/v1633145809/QQ%E5%9B%BE%E7%89%8720211001233422_j2ln0t.png" style = "
+  width: 100%;"/> 
+</p>
+<p align="center">
+<img src = "https://res.cloudinary.com/daufq6nuh/image/upload/v1633145809/QQ%E5%9B%BE%E7%89%8720211001233425_rmvfbj.png" style = "
+  width: 100%;"/> 
+</p>
+<p align="center">
+<img src = "https://res.cloudinary.com/daufq6nuh/image/upload/v1633145809/QQ%E5%9B%BE%E7%89%8720211001233435_kw8mcl.png" style = "
+  width: 100%;"/> 
+</p>
+<p align="center">
+<img src = "https://res.cloudinary.com/daufq6nuh/image/upload/v1633145809/QQ%E5%9B%BE%E7%89%8720211001233431_ev6rfy.png" style = "
+  width: 100%;"/> 
+</p>
+
 
 
 
