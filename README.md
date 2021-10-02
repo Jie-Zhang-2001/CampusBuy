@@ -7,7 +7,7 @@ and anyone can join for their own purposes. This is a full stack application usi
 is created using TalkJS API. Backend dynamic file uploading is done through Cloudinary and Multer.
 Responsive UI design is made from React-Bootstrap. </p>
 
-## **How To Play**
+## **How To Use**
 1. Open www.campus-buy.com
 2. Start trading!
 
